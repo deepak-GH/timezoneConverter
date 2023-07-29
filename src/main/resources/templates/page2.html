@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Country Time Converter</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	</head>
+	<body>
+		
+		<div class="container">
+			<div class="row">
+				<h1>Time Converter :</h1>
+			</div>
+			<table class="table table-striped table-bordered">				
+				<thead class="table-dark">
+					<tr>
+						<th> COUNTRY </th>
+						<th> TIME </th>	
+					</tr>			
+				</thead>
+				<tbody class="table-dark">
+					<tr>
+						<td  th:text="'PRESENT TIMEZONE   :   '+${myCountry}"></td>
+						<td  th:text="${mytime}"></td>
+					</tr>
+					
+					<tr>
+						<td  th:text="'SELECTED :       '+${selectedZone}"></td>
+						<td  th:text="${newzoneTime}"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" align="center">
+							
+						<form  th:action="@{/page2}" th:object="${workingTZ}" method="post">
+							<label th:text="'SELECT: '"/>
+							<select th:field="*{selectedZoneId}">
+   								<option th:each="zone:${allZones}" th:text="${zone}" th:value="${zone}" >
+            					</option>
+							</select>
+							<button type="submit" class="btn btn-info col-2">Check Time</button>
+						</form>
+						
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+		
+	</body>
+</html>
+			
